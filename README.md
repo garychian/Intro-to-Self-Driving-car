@@ -103,8 +103,12 @@ On the mathmatical side we'll use `vectors` and `matrices` top keep track of sta
 
 #### State vector vs matrix
   - state vector: an 2x1 state vector that contains variables: x and v
-  !()[]
+  
+  <img src = "https://github.com/garychian/Intro-to-Self-Driving-car/blob/master/Images/state%20vector.png" width = 100>
+   
+  - Matrix multiplication
+  
+  <img src = "https://github.com/garychian/Intro-to-Self-Driving-car/blob/master/Images/matrix%20mutiplication.png" width = 400>
 
-
-
+These are just our equations for our **constant velocity motion model**. Matrix multiplication let us create new, predicted state vector in just one multiplication step! The 2x2 matrix is often called the **state transformation matrix**
 
