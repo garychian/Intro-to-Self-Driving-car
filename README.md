@@ -34,7 +34,7 @@ But for a constant acceleration model, you'll also need our acceleration: `acc`.
 
 Here is a state includes acceleration.
 
-```
+```python
 # initial variables
 x = 0
 velocity = 50
@@ -75,7 +75,7 @@ Eg. for car class with upercase 'C'. The class allows us to write code like `car
   
   function rotates the velocity values to the left 90 dedgrees, and it updates the state!
   
-  ```
+  ```python
   def turn_left(self):
      """ Turning left "rotates" the velocity values, so vy = -vx, and vx = vy.
          For example, if a car is going right at 1 world cell/sec this means 
@@ -111,4 +111,57 @@ On the mathmatical side we'll use `vectors` and `matrices` top keep track of sta
   <img src = "https://github.com/garychian/Intro-to-Self-Driving-car/blob/master/Images/matrix%20mutiplication.png" width = 400>
 
 These are just our equations for our **constant velocity motion model**. Matrix multiplication let us create new, predicted state vector in just one multiplication step! The 2x2 matrix is often called the **state transformation matrix**
+
+### 3.3 Matrices and Transformation of State
+1. Matrix_addition
+```python
+def  matrix_addition(matrixA, matrixB):
+     matrixSum = []
+     row = []
+     for r in range(matrixA):
+         new_row = []
+         for c in range(matrixA[0]):
+             row.append(matrixA[r][c] + matrixB[r][c])
+         matrixSum.append(row)
+      return matrixSum
+# note: cannot write as matrix_addtion([1,2,3],[4,5,6])
+```
+2. Matrix_multiplication
+```python
+def get_row(matrix,row):
+    return matrix[row]
+def get_column(matrix,column_number):
+    column = []
+    for r in range(len(matrix)):
+        column.append(matrix[r][column_number])
+    return column
+def dot_product(vector_one, vector_two):
+    result = 0
+    for i in range(len(vector_one)):
+        result += vector_one[i] * vector_two[i]
+    return result
+def matrix_multiplication(matrixA, matrixB):
+    m_rows = len(matrixA)
+    p_columns = len(matrixB[0])
+    result = []
+    for r in range(m_rows):
+        row_result = []
+        rowsA = get_row(matrixA,r)
+        for c in range(p_columns):
+            colsB = get_column(matrixB, c)
+            dotProduct = dot_product(rowsA, colsB)
+            row_result.append(dotProduct)
+        result.append(row_result)
+    return result
+```
+3. Matrix_transpose
+4. Inverse_matrix
+5. Identity_matrix
+
+
+
+
+
+
+
 
