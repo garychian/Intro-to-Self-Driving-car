@@ -155,6 +155,16 @@ def matrix_multiplication(matrixA, matrixB):
     return result
 ```
 3. Matrix_transpose
+```python
+def transpose(matrix):
+    matrix_transpose = []
+    for c in range(len(matrix)):
+        new_row = []
+        for r in range(len(matrix[0]):
+            new_row.append(matrix[r][c])
+        matrix_transpose.append(new_row)
+return matrix_transpose
+```
 4. Inverse_matrix
 5. Identity_matrix
 
