@@ -12,10 +12,31 @@ First, start with an initial predition of our car's location and probability dis
 ### 1.2 Measurement Update
 We then sense the world around the car. This is measurement update step, in which we gather more information about the car's surroundings and refine our location prediction. 
 - Base on bayes rule, and do multiplication for **new mu and sig**
+```python
+y = m.Matrix([[lidar_measurement[i + 1]]]) - H * x_prime
+S = H * P_prime * H.T() + R
+K = P_prime * H.T() * S.inverse()
+x = x_prime + K * y
+P = (I - K * H) * P_prime
+
+# S - intermediate matrix for calculating Kalman gain
+# K - Kalman gain
+# P - error covariance matrix
+```
 
 ### 1.3 Motion Update (Prediction)
 The next step is moving, we predict where the car will move, based on the knoledge we have about its velocity and current position. And we shift our probability distribution to reflect this movement. 
 - Base on total probability, and do addtion for **new mu and sig**
+```python
+F = F_matrix(delta_t)
+Q = Q_matrix(delta_t, acceleration_variance)
+
+# F: state transition matriix
+# Q: Process noise covariance matrix
+
+x_prime = F * x
+P_prime = F * P * F.T() + Q
+```
 
 ### 1.4 Reapt 
 Then, finally, we've formed a new estimate for the position of the car! The Kalman Filter simply repeats the **sense and move (measurement and prediction)** steps to localize the car as it's moving. 
