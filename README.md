@@ -130,16 +130,19 @@ def  matrix_addition(matrixA, matrixB):
 ```python
 def get_row(matrix,row):
     return matrix[row]
+    
 def get_column(matrix,column_number):
     column = []
     for r in range(len(matrix)):
         column.append(matrix[r][column_number])
     return column
+    
 def dot_product(vector_one, vector_two):
     result = 0
     for i in range(len(vector_one)):
         result += vector_one[i] * vector_two[i]
     return result
+    
 def matrix_multiplication(matrixA, matrixB):
     m_rows = len(matrixA)
     p_columns = len(matrixB[0])
@@ -155,9 +158,59 @@ def matrix_multiplication(matrixA, matrixB):
     return result
 ```
 3. Matrix_transpose
+```python
+def transpose(matrix):
+    matrix_transpose = []
+    for c in range(len(matrix)):
+        new_row = []
+        for r in range(len(matrix[0]):
+            new_row.append(matrix[r][c])
+        matrix_transpose.append(new_row)
+return matrix_transpose
+```
 4. Inverse_matrix
+```python
+def inverse_matrix(matrix):
+    inverse = []
+    if len(matrix) != len(matrix[0]):
+        raise ValueError('The matrix must be square')
+    if len(matrix) >= 3:
+        raise NotImplementeError('this functionality is not implemented')
+    if len(matrix) == 1:
+        inverse.append(1/matrix[0][0])
+    elif len(matrix) == 2:
+        if matrix[0][0] * matrix[1][1] == matrix[0][1] * matrix[1][0]:
+            raise ValueError('The matrix is not invertible')
+        else:
+            a = matrix[0][0]
+            b = matrix[0][1]
+            c = matrix[1][0]
+            d = matrix[1][1]
+            
+            factor = 1/(a * d - c * b)
+            inverse = ([d,-b],[-c,a])
+            
+            for i in range(len(inverse)):
+                for j in range(len(inverse[0])):
+                    inverse[i][j] = factor * inverse[i][j]
+    return inverse          
+```
 5. Identity_matrix
+```python
+def identity_matrix(n):
+    identity = []
+    
+    for i in range(n):
+        new_row = []
+        for j in range(n):
+            if i == j:
+                new_row.append(1)
+            else:
+                new_row.append(0)
+        identity.append(new_row)
+    return identity
 
+```
 
 
 
