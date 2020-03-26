@@ -1,5 +1,11 @@
 # Intro-to-Self-Driving-car
 ## Kalman Filter
+Kalman filters are really good at taking noisy sensor data and smooting out the data to make more accurate predictions. For autonomous vehicles, Kalman filters can be used in **object tracking**
+
+Kalman filter does this by weighing the uncertainty in your belief about the location vs the uncertainty in the lidar or radar measurement. If your belief is very uncertain(more error), the Kalman filter gives more weight to the sensor. I the sensor measurement has more uncertainty(more error), your belief about the location gets more weight than the sensor measurement. 
+
+## Steps
+
 ### 1.1 Initial Prediction 
 First, start with an initial predition of our car's location and probability distribution that describes our uncertainty about that predition. 
 
