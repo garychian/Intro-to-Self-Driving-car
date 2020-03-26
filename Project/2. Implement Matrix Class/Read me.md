@@ -1,6 +1,5 @@
 1. `matrix.py` This contains the begining of a `Matrix` class (which you will complete) as well as some helper functions `zeros` and `identity`. 
 **This is the file we will be doing most of our work.**
-  - 
 
 2. `matrix_playground.ipynb` A notebook that imports our Matrix class and calls the test code. 
 
