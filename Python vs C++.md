@@ -34,7 +34,8 @@ returndatatype functionname(datatype variable_a, datatype variable_b, etc.){
 }
 // we don't have to put the function declaration at the top of our code to get a working solution. For doing that, we have to define our function before the main() function not after.
 ```
-## Control statements(if, for, while, swich)
+## Control statements
+### If/else
 A generic **if else** statement in C++ looks like this:
 ```c++
 if(<some criteria>){
@@ -83,3 +84,75 @@ for loop example
 
 ```
 **In C++, `''` means `char`, `""` means 'string'**
+
+### Switch (Python have no switch function)
+```c++
+int variable - integer;
+
+switch(variable){
+    case 1:
+        code statements;
+        break;
+    case 2:
+        code statements;
+        break;
+    case 3:
+        code statements:
+        break;
+    ...
+
+```
+## C++ vector
+C++ vector is like python list, we can add and remove elements from it. 
+```c++
+# include<vector>
+
+int main(){
+    std::vector<float> floatvectorvariable;
+    return 0;
+}
+
+```
+### Initializing Vetor Values
+#### Declaring and Defining Simultaneously
+`std::vector<int> myvector (10,6)`
+#### Declaring and Defining Simultaneously  with Brackets
+`std::vector<float> myvector = {5.0,3.0,2.7,8.2,7.9}`
+### Vector Methods
+#### assign
+assign helps us quickly populate a vector with fixed values.
+```c++
+vector<int> intvariable;
+intvariable.assign(10,16);
+
+// it going to populate the vector with 10 integers all having the value of 16
+```
+#### push back
+pushback adds an element to the end of the vector
+```c++
+vector<int> intvariable;
+intvariable.push_back(25);
+```
+#### size
+size returns the size of the vector
+`intvariable.size();`
+
+### Vectors and For loops
+we can do things like using for loops
+    - populate a vector with values
+    - do math with vector
+
+### namespace
+`using namespace std`
+```c++
+#include <iostream>
+# include <vector>
+# using namespace std;
+
+int main() {
+    vector<int> intvectorvariable;
+    int intvariable = 5;
+    cout << intvariable << endl;
+    return 0;
+}
+```
