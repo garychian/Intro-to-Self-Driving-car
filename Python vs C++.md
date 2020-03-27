@@ -141,7 +141,42 @@ size returns the size of the vector
 we can do things like using for loops
     - populate a vector with values
     - do math with vector
+#### i++ vs ++i
+```c++
+int i = 5;
+int x = i++; // x = 5, i = 6 (called postfix)
+int x = ++i; // x = 6, i = 6 (called prefiix)
 
+//When overloading the postfix operator, C++ needs to keep track of two values. In the example, the values would be 5 and 6. For the prefix operator, C++ only needs to keep track of one value: 6. Hence, when overloading the ++ operator, it's generally more efficient to use prefix than the postfix.
+```
+#### 2D Vectors
+```c++
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+int main(){
+    // declare a two dimensional vector of type int
+    vector <int> twovector;
+    
+    // setup a row
+    vector<int> singlerow(3,2);
+    
+    // append five rows
+    for (int i = 0; i < 5; i++){
+        twovector.push_back(single_row);
+    } 
+    for (int row = 0; row < twovector.size(); row++){
+        for (int col = 0; col < twovector[0].size(); col++){
+            cout<<twovector[row][col]<<" ";
+        }
+        cout << endl;
+    }
+    return 0;
+}
+
+```
 ### namespace
 `using namespace std`
 ```c++
