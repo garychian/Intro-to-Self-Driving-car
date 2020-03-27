@@ -32,4 +32,54 @@ returndatatype functionname(datatype variable_a, datatype variable_b, etc.){
     
     return returndatatype;
 }
+// we don't have to put the function declaration at the top of our code to get a working solution. For doing that, we have to define our function before the main() function not after.
 ```
+## Control statements(if, for, while, swich)
+A generic **if else** statement in C++ looks like this:
+```c++
+if(<some criteria>){
+    statement_1;
+    statement_2;
+    ...
+}
+
+else if(<some other criteria>){
+    statement_1;
+    statement_2;
+    ...
+}
+```
+
+### Boolean Logic
+they are exactly the same.
+|**operator**| **Python**|**C++**|
+|:---        |   :----:   |   :----:|
+|equal       |==|==|
+|not equal |!=|!=|
+|greater than|>|>
+|less than|<|<|
+|greater than or equal|>=|>=|
+|less than or equal|<=|<=|
+|and|and|&&|
+|or|or|II |
+|not|not|!|
+
+### While
+A generic while statement looks like this:
+```c++
+while(<some criteria>){
+    statement_1;
+    statement_2;
+    statement_3;
+    ...
+}
+```
+### For
+for loop example
+```c++
+// in python, the iterator was defined as: i in range(0, elapsed_time), range() generates a list of numers. 
+// for C++
+(int i = 0; i < elapsed_time; i++)
+
+```
+**In C++, `''` means `char`, `""` means 'string'**
