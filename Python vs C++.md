@@ -271,6 +271,7 @@ int main(){
 
 `sstream` provides functionality for manipulating and parsing the string
 
+
 ## 5. C++ Object Oriented Programming
 
 ### 5.1 Expanation of the Main.cpp
@@ -375,7 +376,7 @@ Likewise, for gaussian.cpp, you can include the header file as well rather than 
 - In head files, if we use `#include"engine.h"`, it may cause main.cpp error, because some classes may declared several times in main.cpp
 - As an aside, you'll notice that the header files did not use the standard namespace. It's generally recommended to avoid using namespaces in a header file. This can help avoid naming conflicts later as functions and classes are reused in different parts of a code base.
 
-### 5.3 Example 
+### 5.3 Implement a Class (take class Matrix as an example) 
 #### 5.3.1 Class Variables
 ```c++
 // matrix.h
@@ -389,7 +390,28 @@ class Matrix
         // A size_type variable is actually an unsigned int. The size_type variable is guaranteed to be able to hold up to the maximum size of a float vector.
 }
 ```
+### 5.3.2 Class Functions
+- To write a function, we need declare those function first, these functions could be three categrries:
+    - constructor functions
+    constructor functions are for initializing objects
+    - set and get functions
+    for accessing and assigning values to private variables
+    - functions for Matrix functionality
+    like: printing out the matrix, adding matrices together, multiplying matrices etc
+
+    **function declarations should go inside the class declaration**
 
 ```c++
+// matrix.h
+#include< vector>
 
+class Matrix
+{
+    private:
+        std::vector<std::vector<float>> grid;
+        std::vector<float>::size_type rows;
+        std::vector<float>::size_type cols;
+        // The value that goes inside the brackets <> is based on whatever the original vector declaration was.
+        // A size_type variable is actually an unsigned int. The size_type variable is guaranteed to be able to hold up to the maximum size of a float vector.
+}
 ```
