@@ -390,20 +390,33 @@ class Matrix
         // A size_type variable is actually an unsigned int. The size_type variable is guaranteed to be able to hold up to the maximum size of a float vector.
 }
 ```
-### 5.3.2 Class Functions
+#### 5.3.2 Class Functions
 - To write a function, we need declare those function first, these functions could be three categrries:
-    - constructor functions
+1. constructor functions
     constructor functions are for initializing objects
-    - set and get functions
+        
+```c++
+// declare in head file
+matrix();
+
+// define in cpp file
+Classname::Classname(datatype variable1, datatype variable2){
+    constructor function definition
+}
+```
+2. set and get functions
     for accessing and assigning values to private variables
-    - functions for Matrix functionality
+
+3. functions for Matrix functionality
     like: printing out the matrix, adding matrices together, multiplying matrices etc
 
-    **function declarations should go inside the class declaration**
+**function declarations should go inside the class declaration**
 
 ```c++
 // matrix.h
 #include< vector>
+#include<iostream>
+#include<stdexcept>
 
 class Matrix
 {
@@ -413,5 +426,126 @@ class Matrix
         std::vector<float>::size_type cols;
         // The value that goes inside the brackets <> is based on whatever the original vector declaration was.
         // A size_type variable is actually an unsigned int. The size_type variable is guaranteed to be able to hold up to the maximum size of a float vector.
+
+    public:
+
+        // constructor function declarations
+        // Classname(datatype variables1, datatype variable 2, ...)
+        matrix();
+        matrix(std::vector<std::vector<float>>);
+
+        // set and get function declarations
+        void setGrid(std::Vector<std::vector<float>>);
+
+        std::vector<std::vector<float>> getGrid();
+        std::Vector<float>::size_type getRow();
+        std::vector<float>::size_type getCols();
+
+        // matrix function declarations
+        std::vector<std::vector<float>> matrix_transpose();
+        std::Vector<std::vector<float>> matrix_addition(Matrix);
+        void matrix_print();
+};
+```
+```c++
+// matrix.cpp
+#include "matrix.h"
+
+Matrix::Matrix(){
+    std::vector <std::vector<float>> initial_grid (10, std::vector <float>(5,0,5));
+    grid = initial_grid;
+    rows = initial_grid.size();
+    cols = initial_grid[0].size();
 }
+
+Matrix::Matrix(std::vector <std:: vector<float>> initial_grid){
+    grid = initial_grid;
+    rows = initial_grid.size();
+    cols = initial_grid[0].size();
+}
+
+void Matrix::setGrid(std::Vector<std::vector<float>> new_grid){
+    grid = new_grid;
+    rows = new_grid.size();
+    cols = new_grid[0].size();
+}
+
+std::vector<std::vector<float>> Matrix::getGrid(){
+    return grid;
+}
+
+std::vector<float>::size_type Matrix::getRows() {
+    return rows;
+}
+
+std::vector<float>::size_type Matrix::getCols() {
+    return cols;
+}
+
+Matrix Matrix::matrix_transpose() {
+    std::vector< std::vector<float> > new_grid;
+    std::vector<float> row;
+
+    for (int i = 0; i < cols; i++) {
+        row.clear();
+
+        for (int j = 0; j < rows; j++) {
+            row.push_back(grid[j][i]); 
+        }
+        new_grid.push_back(row);
+    }
+
+    return Matrix(new_grid);
+}
+
+Matrix Matrix::matrix_addition(Matrix other) {
+
+    if ((rows != other.getRows()) || (cols != other.getCols())) {
+        throw std::invalid_argument( "matrices are not the same size" );
+    }
+
+    std::vector< std::vector<float> > othergrid = other.getGrid();
+
+    std::vector< std::vector<float> > result;
+
+    std::vector<float> new_row;
+
+    for (int i = 0; i < rows; i++) {
+        new_row.clear();
+        for (int j = 0; j < cols; j++) {
+            new_row.push_back(grid[i][j] + othergrid[i][j]);
+        }
+        result.push_back(new_row);
+    }
+
+    return Matrix(result);
+}
+
+void Matrix::matrix_print() {
+
+    std::cout << std::endl;
+
+    for (int i = 0; i < rows; i++)
+    {
+        for (int j = 0; j < cols; j++)
+        {
+            std::cout << grid[i][j] << " ";
+        }
+        std::cout << std::endl;
+    }
+    std::cout << std::endl;
+}
+
+```
+####5.3.3 Instantiate an object
+```c++
+Classname objectname (inputs from initializing an object of Classname);
+```
+Then we can access  any public variables like
+```c++
+objectname.variablename
+```
+access public functions like
+```c++
+objectname.methodname(inputs)
 ```
