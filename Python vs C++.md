@@ -549,3 +549,71 @@ access public functions like
 ```c++
 objectname.methodname(inputs)
 ```
+
+
+# C++ intro to Optimization
+## Intro to Computer hardware
+### Compliers and Optimization
+C++ complier rewrites our code into binary instructions. The purpose pf optimizations:
+    - Make the code run faster
+    - Use less memory
+    - Consume less electric power
+### Hardware Limitations
+Some computer architectures use an approximation that directly on the CPU's arithmetic/logic unit, we may get our code to run faster.
+    - CPU (Central processing unit)
+        - Control Unit
+            Carries out the instructions contained in our code
+        - Arithmetic/ Logic Unit(ALU)
+            Calcuates mathmatical and logical expressions
+    - RAM 
+        Store variables and instructions to support excution of program 
+
+### Binary
+|Type|bytes|Value range|
+|:---|  :--:  | :---:|
+|char|2 byte (8 bits))|signed (-128 to 127), unsigned(0 to 255)|
+|int (16)|2 bytes(16 bits)|signed (-32768 to 32767), unsigned(0 to 65535)|
+|int (32)|4 bytes(32 bits)|signed (-2147483648 to 2147483647), unsigned(0 to 4294967295)|
+|float (32)|4 bytes(32 bits)|signed (-2147483648 to 2147483647), unsigned(0 to 4294967295)|
+Note: If your CPU uses a 32-bit architecture, you can still create 64-bit variables in your programs as long as your compiler has this feature. But, the code will most likely run more slowly than using a 64-bit architecture with 64-bit variables. On a 32 bit system, the compiler has to create extra instructions to move and do math on 64-bit variables.
+
+### Memory and the CPU
+#### Stack
+When you declare a variable in C++ --> variable will be placed on the stack --> when the function terminates --> the variable is removed from stack
+Note: 
+    - Stack follows FIFO rule
+    - The stack is tends to be small, reason: is good for multi-threading.  
+#### Heap
+The heap, on the other hand, is only limited by the amount of RAM currently available. So variables that hold a lot of memory have to go on the heap.
+Note: variables declare in heap should be deleted manually, otherwise it will cause crash. 
+And heap is slower than stack.  
+
+#### Dynamic Memory allocation
+Dynamic memory allocation refers to when you assign variables to memory manually, these variables will go on the heap rather than the stack.
+Example of dynamic memory allocation using pointers:
+```c++
+#include <iostream>
+
+int main(){
+    // asterisk syntax creates a pointer variable, which can hold a memory address
+    int * pointervariable;
+
+    // new is used to create a variable on the heap. This line assign an addresss to
+    // pointervariable and reserves enough space told hold an ineger.
+    pointervariable = new int;
+
+    // pointer variable holds an addresss. The address allows placing a value in memory 
+    // at the address.
+    *pointervariable = 10;
+
+    std::cout << "pointer value: " << *pointervariable<< "\n";
+    std::cout <<"pointer address: " << pointervariable<<"\n";
+
+    // remove pointervariable from the heap
+    delete pointervariable;
+    pointervariable = NULL;
+
+    return 0;
+}
+```
+
