@@ -551,14 +551,15 @@ objectname.methodname(inputs)
 ```
 
 
-# C++ intro to Optimization
-## Intro to Computer hardware
-### Compliers and Optimization
+# Performance Programming C++
+## C++ Intro to optimization
+### Intro to Computer hardware
+#### Compliers and Optimization
 C++ complier rewrites our code into binary instructions. The purpose pf optimizations:
     - Make the code run faster
     - Use less memory
     - Consume less electric power
-### Hardware Limitations
+#### Hardware Limitations
 Some computer architectures use an approximation that directly on the CPU's arithmetic/logic unit, we may get our code to run faster.
     - CPU (Central processing unit)
         - Control Unit
@@ -616,4 +617,27 @@ int main(){
     return 0;
 }
 ```
+## C++ Optimization Practice
+### Software Development steps:
+    - Code design
+    - Implementing the design 
+    - Testing for bugs and fixing the bugs
+    - Optimization
+### Optimization Techniques
+    - Remove Dead(non-used) Code
+    - Avoid Extra if statements
+```c++
+int x = 5;
+if (x >= 5) {x = x +1;}
+if (x < 5){x = x -1;}
+
+// this is not efficient, use if and else
+```
+    - Avoid Nested for loops
+    - Avoid Creating Extra Variables
+    - Reserve Space in Memory for Vectors
+    - Passing Variables by Reference
+        Whenever you call a function, C++ copies any input variables into memory even if those variables are already in memory. For fundamental data types like int, char, or float, this might not be a problem.But with variables that take up a more significant amount of space, such as vectors, the extra copying can slow down your programs. 
+    - Using Static
+        Instead of calculating the variables over and over again, you can declare these variables as static. When the function is called the first time, C++ stores the values in memory and re-uses the values every time the function is called.
 
