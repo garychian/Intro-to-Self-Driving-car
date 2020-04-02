@@ -619,13 +619,16 @@ int main(){
 ```
 ## C++ Optimization Practice
 ### Software Development steps:
-    - Code design
-    - Implementing the design 
-    - Testing for bugs and fixing the bugs
-    - Optimization
+    1. Code design
+    2. Implementing the design 
+    3. Testing for bugs and fixing the bugs
+    4. Optimization
 ### Optimization Techniques
-    - Remove Dead(non-used) Code
-    - Avoid Extra if statements
+    1. Remove Dead(non-used) Code
+        extra code which is no longer serves a purpose
+        (1) Redundant code
+        (2) Unreachable code
+    2. Avoid Extra if statements
 ```c++
 int x = 5;
 if (x >= 5) {x = x +1;}
@@ -633,11 +636,51 @@ if (x < 5){x = x -1;}
 
 // this is not efficient, use if and else
 ```
-    - Avoid Nested for loops
-    - Avoid Creating Extra Variables
-    - Reserve Space in Memory for Vectors
-    - Passing Variables by Reference
-        Whenever you call a function, C++ copies any input variables into memory even if those variables are already in memory. For fundamental data types like int, char, or float, this might not be a problem.But with variables that take up a more significant amount of space, such as vectors, the extra copying can slow down your programs. 
-    - Using Static
-        Instead of calculating the variables over and over again, you can declare these variables as static. When the function is called the first time, C++ stores the values in memory and re-uses the values every time the function is called.
+    3. Avoid Nested for loops
+        Don't use them if you don't need them
+```c++
+// Bad
+for(unsigned int i = 0; i < matrix.size(); i++){
+    for (unsigned j = 0; j < matrix.size(); j++){
+        do somthing...
+    }
+}
+
+// Better
+for(unsigned int i = 0; i < matrix.size(); i++){
+    do somthing...
+}
+for (unsigned j = 0; j < matrix.size(); j++){
+        do somthing...
+}
+```
+    4.  Avoid Creating Extra Variables
+    5.  Reserve Space in Memory for Vectors
+        because you do not need to specify a vector's length when declaring a vector variable. So the compiler will not know ahead of time how much memory to allocate. And once the vector's length goes beyond the initial allocated memory, the entire vector gets copied to a part of RAM with more space.
+
+        reserve() method will specify the vector's length before pushing values
+```c++
+#include<iostream>
+#include<vector>
+
+Using namespace std;
+
+int main(){
+    vector<int> myvector;
+    int vector_size = 50;
+    myvector.reserve(vector_size);
+
+    for (int i = 0; ii < vector_size; i++){
+        myvector.push_back(i);
+    }
+    return 0
+}
+```
+
+    6.  Passing Variables by Reference
+Whenever you call a function, C++ copies any input variables into memory even if those variables are already in memory. For fundamental data types like int, char, or float, this might not be a problem.But with variables that take up a more significant amount of space, such as vectors, the extra copying can slow down your programs. 
+& (ampersand symbol) gives the address of variable's address.  
+
+    7.  Using Static
+Instead of calculating the variables over and over again, you can declare these variables as **static**. When the function is called the first time, C++ stores the values in memory and re-uses the values every time the function is called.
 
