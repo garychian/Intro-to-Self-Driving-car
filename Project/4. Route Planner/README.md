@@ -56,15 +56,24 @@ Input: map, start and goal
 Output: a list of intersections [5,16,37,12,34]
 
 PathPlanner class:
+
 	__init__
 	- map
+
 	- start
+
 	- goal
+
 	- closedSet: includes any explored/visited nodes
+
 	- openSet: any nodes on our frontier for potential future exploration
+
 	- camefrom: hold the previous node that best reaches a given node
+
 	- gScore
+
 	- fScore
+	
 	- path: comes from _search_ function
 
    **reconstruct_path** This function just rebuilds the path after search is run, going from the goal node backwards using each node's **camefrom** information 
