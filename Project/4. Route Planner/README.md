@@ -84,3 +84,7 @@ PathPlanner class:
    After all that, it will check that there are still nodes to explore by implementing is_open_empty function. 
    If we're at our goal, we reconstruct the path. If not, we move our current node from the frontier (openset) and into explored (closedSet).
    Then we check out the neighbors the current node, check out their costs, and plan our next move. 
+
+   please see below image for more details
+
+   <img src = "https://github.com/garychian/Intro-to-Self-Driving-car/blob/master/Images/6.%20The%20Search%20Problem%20-4.jpg">
